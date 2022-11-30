@@ -4,5 +4,5 @@ app = FastAPI()
 
 
 @app.get("/")
-async def root():
+async def raiz():  # raiz pode ser qualquer nome
     return {"message": "Hello World"}
