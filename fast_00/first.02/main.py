@@ -2,20 +2,31 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-cursos = {
-    1: {
-        "titulo": "Programação para leigos",
-        "aulas": 112,
-        "horas": 58
-    },
-    2: {
-        "titulo": "algoritmos e logica de programação",
-        "aulas": 87,
-        "horas": 67
-    }
+vendas = {
+    1: {"item": "lata", "preço_unitario": 4, "quantidade": 5},
+    2: {"item": "garrafa 2l", "preço_unitario": 15, "quantidade": 5},
+    3: {"item": "garrafa 750", "preço_unitario": 10, "quantidade": 5},
+    4: {"item": "lata mini", "preço_unitario": 2, "quantidade": 5},
 }
+
+
+@app.get('/')
+def home():  # raiz pode ser qualquer nome
+    return {"vendas": len(vendas)}
+
 
 if __name__ == '__main__':
     import uvicorn
 
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
+# id_vendas é variavel então tem que vir entre colchetes
+# dartipagem para id
+
+
+@app.get("/vendas/{id_venda}")
+def pegar_venda(id_venda: int):
+    if id_venda in vendas:
+        return vendas[id_venda]
+    else:
+        return {"Erro": "ID Venda inexistente"}
