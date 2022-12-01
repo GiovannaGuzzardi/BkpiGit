@@ -11,7 +11,7 @@ vendas = {
 
 
 @app.get('/')
-def home():  # raiz pode ser qualquer nome
+async def home():  # raiz pode ser qualquer nome
     return {"vendas": len(vendas)}
 
 
