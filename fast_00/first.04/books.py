@@ -39,5 +39,6 @@ async def create_book(book_title, book_author):
             if x > current_book_id:
                 current_book_id = x  # faz com que o id seja do ultimo
     BOOKS[f'book_{current_book_id+1}'] = {'title': book_title,
-                                          'author': book_author}  # adiciona id e itens no id
+                                          'author': book_author}
+    # adiciona id e itens no id
     return BOOKS[f'book_{current_book_id+1}']  # retorna id criado
